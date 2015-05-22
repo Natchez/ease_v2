@@ -1,0 +1,27 @@
+<ion-view>
+    <ion-content>
+        <form>
+            <div class="list easeForm">
+                <div class="loginlogo"><img class="logeaselogo" src="templates/images/loginlogo.png" alt="">
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input type="text" ng-model="loginData.username">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="loginData.password">
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive loginbtn" type="submit" ng-click="login(loginData)">Log in</button>
+                </label>
+                <button class="button button-clear button-positive" ng-click="regModal()">
+                    Signup
+                </button>
+                <button class="button button-clear button-positive">
+                    Forgot Password
+                </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
