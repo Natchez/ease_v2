@@ -1,6 +1,20 @@
-<ion-view view-title="Clients">
+<ion-view view-title="User {{user.fname}}'s Clients">
     <ion-content>
-      <!-- The content of the page -->
-      <a href="#/music">Go to music page!</a>
+        <ion-list can-swipe="listCanSwipe" show-delete="shouldShowDelete">
+            <ion-item class="addClD" ng-click="ClientModal()"><i class="icon ion-android-contacts"></i>&nbsp;&nbsp;Add Client
+            </ion-item>
+
+            <ion-item ng-repeat="client in clients" | searchFilter>
+                <a href="#/tab/clients/{{client.idclients}}">
+                    <b>{{client.fname}} {{client.lname}}</b>
+                    <ion-option-button class="button-info" ng-click="edit($index)">
+                        Edit
+                    </ion-option-button>
+                    <ion-option-button class="button-info" ng-click="delete($index)">
+                        Delete
+                    </ion-option-button>
+                </a>
+            </ion-item>
+        </ion-list>
     </ion-content>
-  </ion-view>
+</ion-view>

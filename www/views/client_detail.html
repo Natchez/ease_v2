@@ -1,6 +1,51 @@
-<ion-view view-title="Client Detail">
-    <ion-content>
-      <!-- The content of the page -->
-      <a href="#/music">Go to music page!</a>
+
+<ion-view view-title="{{chat.name}}">
+    <ion-content ng-controller="clientDetailCtrl as clientDetail">
+        <div id="profilepage">
+            <div class="profilea">
+                <div class="poftop">
+                    <div class="profilepicd">
+                        <img class="profilepic" src="views/images/defaultimg.png" alt="">
+                    </div>
+                    <div>
+                        <span class="info"><i class="icon ion-home"></i>&nbsp;&nbsp;{{client.idclients}}</span>
+                        <br>
+                        <span class="info"><i class="icon ion-android-phone-portrait"></i>&nbsp;&nbsp;{{client.fname}}</span>
+                        <br>
+                        <span class="info"><i class="icon ion-android-mail"></i>&nbsp;&nbsp;{{client.lname}}</span>
+                    </div>
+                </div>
+            </div>
+            <ion-slide-box show-pager="false">
+                <ion-slide class="profileb">
+                    {{client.cdesc}}
+                </ion-slide>
+            </ion-slide-box>
+            <ion-slide-box>
+                <ion-slide>
+                    <div class="profilec">
+                        <div id="the-stopwatch" ng-click="showStart = !showStart; startStopTimer()">
+                            <div> {{touchHours}} : {{touchMinutes}} : {{touchSeconds}} </div>
+                            <div ng-show="!showStart">Start</div>
+                            <div ng-show="showStart">Stop</div>
+                        </div>
+
+                    </div>
+                </ion-slide>
+                <!--<ion-slide>
+                    <div class="profilec">
+                        <h2>Recent Timers</h2>
+                        <timer autostart="false" interval="1000">{{hhours}}{{hhoursS}}, {{mminutes}}{{minutesS}}, {{sseconds}}{{secondsS}}.</timer>
+                        <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
+                        <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
+                    </div>
+                </ion-slide>-->
+
+
+            </ion-slide-box>
+        </div>
     </ion-content>
-  </ion-view>
+</ion-view>
+
+
+<div id="rhe-stopwatch" ng-click="timer(); showStart = !showStart"></div>

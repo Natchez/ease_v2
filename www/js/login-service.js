@@ -16,8 +16,8 @@
             };
             return service;
             
-            function userLogin() {
-                return $http.post('/userLogin');
+            function userLogin(user) {
+                return $http.post('/userLogin', user);
             };
                 
             function userRegister() {

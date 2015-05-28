@@ -5,16 +5,35 @@
         .module('ease')
         .service('clService', Service);
 
-    Service.$inject = ['dependencies'];
+    Service.$inject = ['$http'];
 
     /* @ngInject */
-    function Service(dependencies) {
-        this.func = func;
-
-        ////////////////
-
-        function func() {
+    function Service($http) {
+        var service = {
+            getList: getList,
+            getClient: getClient,
+            addClient: addClient,
+            delClient: delClient
             
-        }
+        };
+        return service;
+        
+        function getList () {
+            return $http.get('/getList');
+        };
+        
+        function getClient (clientid) {
+            return $http.get('/getClient/?id=' + clientid);
+            
+        };
+        
+        function addClient (createc) {
+            return $http.post('/addClient', createc);
+            
+        };
+        function delClient () {
+            return $http.post('/delClient');
+            
+        };
     }
 })();

@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('ease', ['ionic'])
+angular.module('ease', ['ionic', 'chart.js'])
 
 .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -48,12 +48,12 @@ angular.module('ease', ['ionic'])
                 }
 
             })
-        .state('tab.addclient', {
-            url: '/addclient',
-            templateUrl: 'views/add_client.html',
-            controller: 'clListCtrl',
-            controllerAs: 'clist'
-        })  
+            .state('tab.addclient', {
+                url: '/addclient',
+                templateUrl: 'views/add_client.html',
+                controller: 'clListCtrl',
+                controllerAs: 'clist'
+            })
             .state('tab.clients', {
                 url: '/clients',
                 views: {
@@ -66,10 +66,15 @@ angular.module('ease', ['ionic'])
 
             })
             .state('tab.client-detail', {
-                url: '/clients:clientid',
-                templateUrl: 'views/client_detail.html',
-                controller: 'clListCtrl',
-                controllerAs: 'clist'
+                url: '/clients/:clientid',
+                views: {
+                    'tab-clients': {
+                        templateUrl: 'views/client_detail.html',
+                        controller: 'clientDetailCtrl',
+                        controllerAs: 'clientDetail'
+
+                    }
+                }
             })
             .state('tab.archive', {
                 url: '/archive',
@@ -82,5 +87,5 @@ angular.module('ease', ['ionic'])
                 }
 
             });
-            $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/login');
     })
