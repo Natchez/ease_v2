@@ -16,6 +16,7 @@ h1,h2,h3,h4,h5{
 a,p{
     text-decoration: none;
     color: #124960;
+    font-size: 11px;
 }
 
 a:hover{
@@ -111,13 +112,12 @@ fieldset {
     border-bottom: thin double #124960;
     color: #fff;
     background: #124960;
+    text-align: center;
 
 }
 
 .profilec {
-    padding-top: 20px;
-    width: 90%;
-    height: 219px;
+    padding-top: 10px;
     margin: 0 auto;
 }
 
@@ -202,4 +202,46 @@ fieldset {
 .addClD {
     text-align: center;
     margin: 0 auto;
+}
+
+.circle{
+    border-radius: 50%;
+	width: 132px;
+	height: 132px;
+    border: thin double #124960;
+    text-align: center;
+    margin: 0 auto;
+}
+.timertext{
+    position: relative;
+    top: 65px;
+}
+.time{
+    position: relative;
+    top: 48px;
+    font-size: 20px;
+} 
+
+.profileb h3{
+    color: #fff;
+}
+
+.timerhelp{
+    color: #fff;
+    position: relative;
+    bottom: 11px;
+}
+select{
+    width: 100%;
+}
+.rateselect{
+    float: left;
+    position: relative;
+    width: 30%;
+    top: 15px;
+}
+
+.timeinc{
+    float: right;
+    width: 70%;
 }

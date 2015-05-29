@@ -18,7 +18,7 @@
         $scope.shouldShowReorder = false;
         $scope.listCanSwipe = true;
 
-        /* Add CLient + Client Modal */
+        /* Client Modal */
 
         $ionicModal.fromTemplateUrl('views/add_client.html', {
             scope: $scope,
@@ -48,11 +48,20 @@
             });
 
         /* Add Client */
-        $scope.addClient = function () {
-                clService.addClient()
+        $scope.addClient = function (createc) {
+                clService.addClient(createc)
                     .success(function (data, status, headers, config) {
-                        if (data.message)
-                            $state.go('tab.clients');
+                        if (status == 201 && data.message)
+                            $scope.modal.hide();
+                        clService.getList()
+                            .success(function (data) {
+                                console.log('Clients.getList: ', data);
+                                $scope.clients = data;
+
+                            })
+                            .error(function (data) {
+                                console.log('There was an error: ', data.message);
+                            });
                         alertPopup.alert({
                             title: 'Client Added',
                             template: $scope.message = data.message
@@ -65,23 +74,23 @@
                     });
             }
             /* Delete Client */
-        $scope.delClient = function (client){
-        var clientid = $scope.clients[client];
-        clService.delClient()
-            .success(function (data, status, headers, config) {
-                if (status = 200 && data.message)
-                    $scope.clients.splice(client, 1);
-                $state.go('tab.clients');
-                alertPopup.alert({
-                    title: 'Success',
-                    template: vm.message = data.message
-                });
-            })
-            .error(function (data, status, headers, config) {
-                console.log(data, status, headers, config);
-                if (data.message)
-                    vm.message = data.message;
-            })
-    }
+        $scope.delClient = function (client, $index) {
+            var clientid = $scope.clients[client].idclients;
+            clService.delClient(clientid)
+                .success(function (data, status, headers, config) {
+                    if (status = 200 && data.message)
+                        $scope.clients.splice(client, 1);
+                    $state.go('tab.clients');
+                    alertPopup.alert({
+                        title: 'Success',
+                        template: vm.message = data.message
+                    });
+                })
+                .error(function (data, status, headers, config) {
+                    console.log(data, status, headers, config);
+                    if (data.message)
+                        vm.message = data.message;
+                })
+        }
     }
 })();

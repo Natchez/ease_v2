@@ -44,10 +44,10 @@ app.post('/userLogin', function (req, res) {
 /////////////////////////////////////////// CREATE USER STUFFS ////////////////////////////////////
 
 
-app.post('/addUser', function (req, res, next) {
+app.post('/userRegister', function (req, res, next) {
     var member = req.body;
     connection.query('INSERT INTO user SET ?', member, function (err, result) {
-        // error saving user in db
+        console.log(member);
         if (err)
             res.status(401).json(err);
         else

@@ -1,5 +1,4 @@
-
-<ion-view view-title="{{chat.name}}">
+<ion-view view-title="{{client.cname}}">
     <ion-content ng-controller="clientDetailCtrl as clientDetail">
         <div id="profilepage">
             <div class="profilea">
@@ -8,39 +7,86 @@
                         <img class="profilepic" src="views/images/defaultimg.png" alt="">
                     </div>
                     <div>
-                        <span class="info"><i class="icon ion-home"></i>&nbsp;&nbsp;{{client.idclients}}</span>
+                        <span class="info"><i class="icon ion-home"></i>&nbsp;&nbsp;{{client.fname}} {{client.lname}}</span>
                         <br>
-                        <span class="info"><i class="icon ion-android-phone-portrait"></i>&nbsp;&nbsp;{{client.fname}}</span>
+                        <span class="info"><i class="icon ion-android-phone-portrait"></i>&nbsp;&nbsp;{{client.phone}}</span>
                         <br>
-                        <span class="info"><i class="icon ion-android-mail"></i>&nbsp;&nbsp;{{client.lname}}</span>
+                        <span class="info"><i class="icon ion-android-mail"></i>&nbsp;&nbsp;{{client.email}}</span>
                     </div>
                 </div>
             </div>
             <ion-slide-box show-pager="false">
                 <ion-slide class="profileb">
-                    {{client.cdesc}}
+                    <h3>Client Timer</h3>
+                    <p class="timerhelp">Configure your timer, then swipe to start!</p>
                 </ion-slide>
             </ion-slide-box>
-            <ion-slide-box>
+            <ion-slide-box show-pager="false">
                 <ion-slide>
                     <div class="profilec">
-                        <div id="the-stopwatch" ng-click="showStart = !showStart; startStopTimer()">
-                            <div> {{touchHours}} : {{touchMinutes}} : {{touchSeconds}} </div>
-                            <div ng-show="!showStart">Start</div>
-                            <div ng-show="showStart">Stop</div>
+                        <h4>Rates</h4>
+                        <ul class="list">
+                            <li class="item item-toggle">
+                                ${{user.lrate}}
+                                <label class="toggle toggle-assertive">
+                                    <input type="checkbox">
+                                    <div class="track">
+                                        <div class="handle"></div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li class="item item-toggle">
+                                ${{user.rrate}}
+                                <label class="toggle toggle-assertive">
+                                    <input type="checkbox">
+                                    <div class="track">
+                                        <div class="handle"></div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li class="item item-toggle">
+                                ${{user.hrate}}
+                                <label class="toggle toggle-assertive">
+                                    <input type="checkbox">
+                                    <div class="track">
+                                        <div class="handle"></div>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="profilec">
+                        <div class="circle" id="the-stopwatch" ng-click="showStart = !showStart; startStopTimer()">
+                            <div class="time"> {{touchHours}} : {{touchMinutes}} : {{touchSeconds}} </div>
+                            <div class="timertext" ng-show="!showStart">Start</div>
+                            <div class="timertext" ng-show="showStart">Stop</div>
                         </div>
+                        <div class="rateselect">
+                            <label for="select">Rate</label>
+                            <select>
+                                <option value="{{user.lrate}}">${{user.lrate}}</option>
+                                <option value="{{user.rrate}}">${{user.rrate}}</option>
+                                <option value="{{user.hrate}}">${{user.hrate}}</option>
+                            </select>
+                        </div>
+
+                        <div class="timeinc">
+                            <button class="button button-clear button-positive" ng-click="addHours()">
+                                +1h
+                            </button>
+                            <button class="button button-clear button-positive" ng-click="addMins()">
+                                +1m
+                            </button>
+                            <button class="button button-clear button-positive" ng-click="addSecs()">
+                                +10s
+                            </button>
+                        </div>
+
 
                     </div>
                 </ion-slide>
-                <!--<ion-slide>
-                    <div class="profilec">
-                        <h2>Recent Timers</h2>
-                        <timer autostart="false" interval="1000">{{hhours}}{{hhoursS}}, {{mminutes}}{{minutesS}}, {{sseconds}}{{secondsS}}.</timer>
-                        <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
-                        <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
-                    </div>
-                </ion-slide>-->
-
 
             </ion-slide-box>
         </div>

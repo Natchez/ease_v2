@@ -20,8 +20,8 @@
                 return $http.post('/userLogin', user);
             };
                 
-            function userRegister() {
-                return $http.post('/userRegister');
+            function userRegister(create) {
+                return $http.post('/userRegister', create);
                 
             };
 

@@ -31,8 +31,8 @@
             return $http.post('/addClient', createc);
             
         };
-        function delClient () {
-            return $http.post('/delClient');
+        function delClient (clientid) {
+            return $http.post('/delClient', {id:clientid});
             
         };
     }

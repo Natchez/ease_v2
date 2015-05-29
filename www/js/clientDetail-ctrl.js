@@ -33,6 +33,20 @@
                stopTimer();
         }
     
+       $scope.addHours = function () {
+           console.log('1H Added');
+         $scope.hTouchHours++;
+       }
+       $scope.addMins = function () {
+           console.log('1m Added');
+         $scope.hTouchMinutes++;
+       }
+       $scope.addSecs = function () {
+           console.log('10s Added');
+         $scope.hTouchSeconds += 10;
+       }
+           
+        
         $scope.hTouchHours = 0;
         $scope.hTouchMinutes = 0;
         $scope.hTouchSeconds = 0;

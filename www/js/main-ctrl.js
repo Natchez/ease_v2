@@ -5,14 +5,13 @@
         .module('ease')
         .controller('mainCtrl', Controller);
 
+        Controller.$inject = ['$http', '$ionicPopup', '$state', '$scope', 'loginService'];
 
     function Controller($http, $ionicPopup, $state, $scope, loginService) {
-        Controller.$inject = ['$scope','$http'];
         var vm = this;
-        var User = {};
-        console.log('Main Controller');
+        /* LOGIN SERVIC */
         $scope.login = function (loginData) {
-            console.log('clicked');
+            
             loginService.userLogin(loginData)
                 .success(function (data, status, headers, config) {
                     if (status == 200) {
