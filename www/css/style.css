@@ -8,6 +8,13 @@
     font-family: 'Baumans', cursive;
 }
 
+.center{
+    margin: 0 auto;
+    color: #fff !important;
+}
+.easebg{
+    background-color: #124960;
+}
 h1,h2,h3,h4,h5{
         font-family: 'Baumans', cursive;
 
@@ -58,23 +65,25 @@ fieldset {
 /*  LOGIN STUFSS  */
 
 .easeForm {
-    position: relative;
-    top: 100px;
-    width: 80%;
-    margin: 0 auto;
+    top: 90px;
 }
 
 .loginlogo {
-    max-width: 458px;
+    max-width: 250px;
     margin: 0 auto;
 }
 .logeaselogo {
     width: 100%;
+    padding-bottom: 25px;
     
 }
 
 .loginbtn{
     background-color: #124960;
+}
+
+.loginhelp{
+    font-size: 15px;
 }
 
 /*SIGNUP STUFFS*/
@@ -88,7 +97,7 @@ fieldset {
     color: #124960;
 }
 .suForm{
-    top: 55px;
+    padding-top: 55px;
     text-align: center;
 }
 
@@ -96,13 +105,13 @@ fieldset {
 
 #profilepage {
     width: 100%;
-    height: 528px;
+/*    height: 528px;*/
     margin: 0 auto;
 }
 
 .profilea {
     width: 100%;
-    height: 239px;  
+    height: 210px;  
 /*    background: #124960;*/
 }
 .profileb {
@@ -122,7 +131,7 @@ fieldset {
 }
 
 .profilepicd {
-    max-width: 65px;
+    max-width: 55px;
     margin: 0 auto;
 }
 .profilepic {

@@ -1,4 +1,7 @@
 <ion-view view-title="User {{user.fname}}'s Clients">
+   <ion-nav-bar class="bar-stable">
+        <ion-nav-back-button class="button-icon icon ion-ios7-arrow-back">Back</ion-nav-back-button>
+    </ion-nav-bar>
     <ion-content>
         <ion-list can-swipe="listCanSwipe" show-delete="shouldShowDelete">
             <ion-item class="addClD" ng-click="ClientModal()"><i class="icon ion-android-contacts"></i>&nbsp;&nbsp;Add Client
