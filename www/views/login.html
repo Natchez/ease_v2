@@ -1,6 +1,6 @@
 <ion-view>
     <ion-content>
-        <form ng-submit="login(loginData)">
+        <form>
             <div class="list easeForm">
                 <div class="loginlogo"><img class="logeaselogo" src="views/images/loginlogo.png" alt="">
                 </div>
@@ -13,7 +13,7 @@
                     <input type="password" ng-model="loginData.password">
                 </label>
                 <label class="item">
-                    <button class="button button-block button-positive loginbtn" type="submit">Log in</button>
+                    <button class="button button-block button-positive loginbtn" ng-click="login(loginData)" type="submit">Log in</button>
                 </label>
                 <button class="button button-clear button-dark loginhelp" ng-click="regModal()">
                     Signup
