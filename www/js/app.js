@@ -17,7 +17,7 @@ angular.module('ease', ['ionic', 'chart.js', 'angularMoment'])
             }
         });
     })
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         $stateProvider
             .state('tab', {
                 url: '/tab',
@@ -88,4 +88,5 @@ angular.module('ease', ['ionic', 'chart.js', 'angularMoment'])
 
             });
         $urlRouterProvider.otherwise('/login');
+        $ionicConfigProvider.tabs.position('bottom'); // other values: top
     })
