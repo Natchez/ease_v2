@@ -1,5 +1,5 @@
 <ion-view view-title="{{client.cname}}">
-   <ion-nav-bar class="bar-stable has-header">
+    <ion-nav-bar class="bar-stable has-header">
         <ion-nav-back-button class="button-icon icon ion-ios7-arrow-back">Back</ion-nav-back-button>
     </ion-nav-bar>
     <ion-content ng-controller="clientDetailCtrl as clientDetail">
@@ -28,64 +28,37 @@
                 <ion-slide>
                     <div class="profilec">
                         <h4>Rates</h4>
-                        <ul class="list">
-                            <li class="item item-toggle">
-                                ${{user.lrate}}
-                                <label class="toggle toggle-assertive">
-                                    <input type="checkbox">
-                                    <div class="track">
-                                        <div class="handle"></div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li class="item item-toggle">
-                                ${{user.rrate}}
-                                <label class="toggle toggle-assertive">
-                                    <input type="checkbox">
-                                    <div class="track">
-                                        <div class="handle"></div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li class="item item-toggle">
-                                ${{user.hrate}}
-                                <label class="toggle toggle-assertive">
-                                    <input type="checkbox">
-                                    <div class="track">
-                                        <div class="handle"></div>
-                                    </div>
-                                </label>
-                            </li>
-                        </ul>
+                        <ion-list>
+                            <ion-radio ng-value="{{user.lrate}}" ng-model="rate">${{user.lrate}}</ion-radio>
+                            <ion-radio ng-value="{{user.rrate}}" ng-model="rate">${{user.rrate}}</ion-radio>
+                            <ion-radio ng-value="{{user.hrate}}" ng-model="rate">${{user.hrate}}</ion-radio>
+                        </ion-list>
                     </div>
                 </ion-slide>
                 <ion-slide>
                     <div class="profilec">
+                        Saved Time Variables
+                        <br> {{saveTime.Hours}} Hours {{saveTime.Minutes}} Minutes and {{saveTime.Seconds}} Seconds
+                        <br> Rate: ${{rate}},
+                        <br> {{client.cname}},
+                        <br> {{saveTime.Date}}
                         <div class="circle" id="the-stopwatch" ng-click="showStart = !showStart; startStopTimer()">
-                            <div class="time"> {{touchHours}} : {{touchMinutes}} : {{touchSeconds}} </div>
+                            <div ng-moddel="time" class="time"> {{touchHours}} : {{touchMinutes}} : {{touchSeconds}} </div>
                             <div class="timertext" ng-show="!showStart">Start</div>
                             <div class="timertext" ng-show="showStart">Stop</div>
                         </div>
-                        <div class="rateselect">
-                            <label for="select">Rate</label>
-                            <select>
-                                <option value="{{user.lrate}}">${{user.lrate}}</option>
-                                <option value="{{user.rrate}}">${{user.rrate}}</option>
-                                <option value="{{user.hrate}}">${{user.hrate}}</option>
-                            </select>
-                        </div>
-
                         <div class="timeinc">
-                            <button class="button button-clear button-positive" ng-click="addHours()">
+                            <button class="button button-clear button-dark" ng-click="addHours()">
                                 +1h
                             </button>
-                            <button class="button button-clear button-positive" ng-click="addMins()">
+                            <button class="button button-clear button-dark" ng-click="addMins()">
                                 +1m
                             </button>
-                            <button class="button button-clear button-positive" ng-click="addSecs()">
+                            <button class="button button-clear button-dark" ng-click="addSecs()">
                                 +10s
                             </button>
                         </div>
+                        <div class="timemsg" ng-show="timeMsg">{{message}}</div>
 
 
                     </div>

@@ -5,7 +5,7 @@
             <button class="button button-clear button-positive" ng-click="regModalClose()">Close</button>
         </ion-header-bar>
         <div>
-            <form class="easeForm suForm">
+            <form novalidate name="signupForm" class="easeForm suForm" ng-model-options="{ updateOn: 'default blur' }">
                 <header id="ratehead">
                     <h3>Personal Info</h3>
                 </header>
@@ -13,35 +13,47 @@
                     <div class="fleft">
                         <label class="item item-input item-floating-label">
                             <span class="input-label">Username</span>
-                            <input type="text" ng-model="create.username" placeholder="Username">
+                            <input required name="username" type="text" ng-model="create.username" placeholder="Username">
+                            <span class="errormsg" ng-show="signupForm.username.$error.required && signupForm.username.$touched ">Username is Required</span>
                         </label>
                         <label class="item item-input item-floating-label">
                             <span class="input-label">Password</span>
-                            <input type="password" ng-model="create.password" placeholder="Password">
+                            <input required name="password" type="password" ng-model="create.password" placeholder="Password">
+                            <span class="errormsg" ng-show="signupForm.password.$error.required && signupForm.password.$touched ">Password is Required</span>
+
                         </label>
                         <label class="item item-input item-floating-label">
                             <span class="input-label">First Name</span>
-                            <input type="text" ng-model="create.fname" placeholder="First Name">
+                            <input required name="fname" type="text" ng-model="create.fname" placeholder="First Name">
+                            <span class="errormsg" ng-show="signupForm.fname.$error.required && signupForm.fname.$touched ">Required</span>
+
                         </label>
                         <label class="item item-input item-floating-label">
                             <span class="input-label">Last Name</span>
-                            <input type="text" ng-model="create.lname" placeholder="Last Name">
+                            <input required name="lname" type="text" ng-model="create.lname" placeholder="Last Name">
+                            <span class="errormsg" ng-show="signupForm.lname.$error.required && signupForm.lanme.$touched ">Required</span>
+
                         </label>
                     </div>
                     <div class="fright">
                         <label class="item item-input item-floating-label">
                             <span class="input-label">Street</span>
-                            <input type="text" ng-model="create.street" placeholder="Street">
+                            <input required name="street" type="text" ng-model="create.street" placeholder="Street">
+                            <span class="errormsg" ng-show="signupForm.street.$error.required && signupForm.street.$touched ">Required</span>
+
                         </label>
                         <label class="item item-input item-floating-label">
                             <span class="input-label">City</span>
-                            <input type="text" ng-model="create.city" placeholder="City">
+                            <input required name="city" type="text" ng-model="create.city" placeholder="City">
+                            <span  class="errormsg" ng-show="signupForm.city.$error.required && signupForm.city.$touched ">Required</span>
+
                         </label>
                         <label class="item item-input item-select">
                             <div class="input-label">
                                 State
+                                <span class="errormsg" ng-show="signupForm.state.$error.required && signupForm.state.$touched ">Required</span>
                             </div>
-                            <select ng-model="create.state">
+                            <select name="state" ng-model="create.state">
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -97,7 +109,8 @@
                         </label>
                         <label class="item item-input item-floating-label">
                             <span class="input-label">Zip Code</span>
-                            <input type="text" ng-model="create.zip" placeholder="Zip">
+                            <input required name="zip" type="text" ng-model="create.zip" placeholder="Zip">
+                            <span class="errormsg" ng-show="signupForm.zip.$error.required && signupForm.zip.$touched ">Required</span>
                         </label>
                     </div>
                     <header id="ratehead">
@@ -107,19 +120,25 @@
                 <fieldset>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Company Name</span>
-                        <input type="text" ng-model="create.cname" placeholder="Company Name">
+                        <input required name="cname" type="text" ng-model="create.cname" placeholder="Company Name">
+                        <span class="errormsg" ng-show="signupForm.cname.$error.required && signupForm.cname.$touched ">Required</span>
                     </label>
                     <label class="item item-input item-floating-label">
-                        <span class="input-label">Max of 15 Characters Please.</span>
-                        <textarea placeholder="Company Description" ng-model="create.cdesc"></textarea>
+                        <span class="input-label">Company Description</span>
+                        <textarea name="desc" placeholder="Company Description" ng-model="create.cdesc"></textarea>
+                        <span class="errormsg" ng-show="signupForm.desc.$error.required && signupForm.desc.$touched ">Required</span>
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Phone #</span>
-                        <input type="text" ng-model="create.phone" placeholder="Phone #">
+                        <input required type="text" ng-model="create.phone" placeholder="Phone #" ng-minlength="10" name="phone">
+                        <span class="errormsg" ng-show=" form.$submitted || signupForm.phone.$error.minlength || signupForm.phone.$error.required && signupForm.phone.$touched">Phone # is Required</span>
+
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Email</span>
-                        <input type="text" ng-model="create.email" placeholder="Email">
+                        <input required type="email" ng-model="create.email" name="email" placeholder="Email">
+                        <span class="errormsg" ng-show=" form.$submitted ||signupForm.email.$error.email || signupForm.email.$error.required && signupForm.email.$touched">This is not a valid email.</span>
+
                     </label>
                     <header id="ratehead">
                         <h2>Enter your Rates</h2>
@@ -127,17 +146,23 @@
                     </header>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Low Rate</span>
-                        <input type="number" placeholder="Low Rate" ng-model="create.lrate">
+                        <input required name="lrate" type="number" placeholder="Low Rate" ng-model="create.lrate">
+                        <span class="errormsg" ng-show=" form.$submitted || create.lrate > create.rrate || create.lrate > create.hrate || signupForm.lrate.$error.required && signupForm.lrate.$touched">Value must be lower then your regular &amp; high rates</span>
+
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Regular Rate</span>
-                        <input type="number" placeholder="Regular Rate" ng-model="create.rrate">
+                        <input required name="rrate" type="number" placeholder="Regular Rate" ng-model="create.rrate">
+                        <span class="errormsg" ng-show=" form.$submitted || create.rrate < create.lrate || signupForm.rrate.$error.required && signupForm.rrate.$touched">Value must be greater then you low rate</span>
+
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">High Rate</span>
-                        <input type="number" placeholder="High Rate" ng-model="create.hrate">
+                        <input required name="hrate" type="number" placeholder="High Rate" ng-model="create.hrate">
+                        <span class="errormsg" ng-show=" form.$submitted || create.hrate < create.lrate || create.hrate < create.rrate || signupForm.hrate.$error.required && signupForm.hrate.$touched">Value must be greater then your regular &amp; low rates</span>
+
                     </label>
-                    <button class="button button-block button-positive loginbtn" type="submit" ng-click="signup(create)">Submit</button>
+                    <button class="button button-block button-positive loginbtn" type="submit" ng-click="signup(create)" ng-disabled="signupForm.$invalid || form.$pristine">Submit</button>
                     <button class="button button-clear button-positive" ng-click="regModalClose()">Already have an account?</button>
                 </fieldset>
             </form>

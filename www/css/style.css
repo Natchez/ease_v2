@@ -19,6 +19,11 @@ h1,h2,h3,h4,h5{
         font-family: 'Baumans', cursive;
 
 }
+.chart-container{
+    width: 90%;
+    margin: 0 auto;
+}
+
 
 a,p{
     text-decoration: none;
@@ -46,6 +51,19 @@ fieldset {
     border: none;
     color: #124960;
     text-align: center;
+}
+
+.message{
+    width: 100%;
+    color: #124960;
+    text-align: center;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+.errormsg{
+    color: maroon;
 }
 
 
@@ -252,5 +270,18 @@ select{
 
 .timeinc{
     float: right;
-    width: 70%;
+    width: 100%;
+    text-align: center;
+}
+
+.timemsg{
+    color: #142960;
+    text-align: center;
+    transition: all .5s;
+    opacity: 1;
+}
+
+.ng-hide{
+    opacity: 0;
+    transition: all .5s;
 }

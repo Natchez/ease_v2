@@ -1,13 +1,13 @@
 <ion-modal-view>
-   <ion-header-bar>
-      <h1 class="title">My Modal title</h1>
-      <div class="buttons">
-     <button class="button button-clear button-positive" ng-click="CloseModal()">Close</button>
-  </div>
+    <ion-header-bar>
+        <h1 class="title">My Modal title</h1>
+        <div class="buttons">
+            <button class="button button-clear button-positive" ng-click="CloseModal()">Close</button>
+        </div>
     </ion-header-bar>
     <ion-content>
         <div>
-            <form class="easeForm suForm">
+            <form novalidate name="clientForm" class="easeForm suForm" ng-model-options="{ updateOn: 'default blur' }">
                 <header id="ratehead">
                     <h2>Basic info</h2>
                     <p class="ratespara">Tell us about your new Client!</p>
@@ -16,27 +16,33 @@
                     <div class="fleft">
                         <label class="item item-input item-floating-label">
                             <span class="input-label">First Name</span>
-                            <input type="text" ng-model="createc.fname" placeholder="First Name">
+                            <input required name="fname" type="text" ng-model="createc.fname" placeholder="First Name">
+                            <span class="errormsg" ng-show="clientForm.fname.$error.required && clientForm.fname.$touched ">Required</span>
                         </label>
                         <label class="item item-input item-floating-label">
                             <span class="input-label">Last Name</span>
-                            <input type="text" ng-model="createc.lname" placeholder="Last Name">
+                            <input required name="lname" type="text" ng-model="createc.lname" placeholder="Last Name">
+                            <span class="errormsg" ng-show="clientForm.lname.$error.required && clientForm.lname.$touched ">Required</span>
+
                         </label>
                     </div>
                     <div class="fright">
                         <label class="item item-input item-floating-label">
                             <span class="input-label">Street</span>
-                            <input type="text" ng-model="createc.street" placeholder="Street">
+                            <input required name="street" type="text" ng-model="createc.street" placeholder="Street">
+                            <span class="errormsg" ng-show="clientForm.street.$error.required && clientForm.street.$touched ">Required</span>
                         </label>
                         <label class="item item-input item-floating-label">
                             <span class="input-label">City</span>
-                            <input type="text" ng-model="createc.city" placeholder="City">
+                            <input required name="city" type="text" ng-model="createc.city" placeholder="City">
+                            <span class="errormsg" ng-show="clientForm.city.$error.required && clientForm.city.$touched ">Required</span>
                         </label>
                         <label class="item item-input item-select">
                             <div class="input-label">
-                                State
+                                State<br>
+                                <span class="errormsg" ng-show="clientForm.state.$error.required && clientForm.state.$touched ">Required</span>
                             </div>
-                            <select ng-model="createc.state">
+                            <select required name="state" ng-model="createc.state">
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -92,7 +98,8 @@
                         </label>
                         <label class="item item-input item-floating-label">
                             <span class="input-label">Zip Code</span>
-                            <input type="text" ng-model="createc.zip" placeholder="Zip">
+                            <input required name="zip" type="text" ng-model="createc.zip" placeholder="Zip">
+                            <span class="errormsg" ng-show="clientForm.zip.$error.required && clientForm.zip.$touched ">Required</span>
                         </label>
                     </div>
                     <header id="ratehead">
@@ -103,21 +110,25 @@
                 <fieldset>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Company Name</span>
-                        <input type="text" ng-model="createc.cname" placeholder="Company Name">
+                        <input required name="cname" type="text" ng-model="createc.cname" placeholder="Company Name">
+                        <span class="errormsg" ng-show="clientForm.cname.$error.required && clientForm.cname.$touched ">Required</span>
                     </label>
                     <label class="item item-input item-floating-label">
-                        <span class="input-label">Max of 15 Characters Please.</span>
-                        <textarea placeholder="Company Description" ng-model="createc.cdesc"></textarea>
+                        <span class="input-label">Company Description</span>
+                        <textarea required name="desc" placeholder="Company Description" ng-model="createc.cdesc"></textarea>
+                        <span class="errormsg" ng-show="clientForm.desc.$error.required && clientForm.desc.$touched ">Required</span>
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Phone #</span>
-                        <input type="text" ng-model="createc.phone" placeholder="Phone #">
+                        <input required name="phone" type="text" ng-model="createc.phone" placeholder="Phone #" ng-minlength="10">
+                        <span class="errormsg" ng-show=" form.$submitted || clientForm.phone.$error.minlength || clientForm.phone.$error.required && clientForm.phone.$touched ">Phone # is Required</span>
                     </label>
                     <label class="item item-input item-floating-label">
                         <span class="input-label">Email</span>
-                        <input type="text" ng-model="createc.email" placeholder="Email">
+                        <input required name="email" type="email" ng-model="createc.email" placeholder="Email">
+                        <span class="errormsg" ng-show=" form.$submitted || clientForm.email.$error.email || clientForm.email.$error.required && clientForm.email.$touched ">This is not a valid email.</span>
                     </label>
-                    <button class="button button-block button-positive loginbtn" type="submit" ng-click="addClient(createc)">Submit</button>
+                    <button class="button button-block button-positive loginbtn" type="submit" ng-click="addClient(createc)"  ng-disabled="clientForm.$invalid || clientForm.$pristine">Submit</button>
                 </fieldset>
             </form>
         </div>

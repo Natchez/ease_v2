@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -8,51 +8,59 @@
     Controller.$inject = ['$scope', '$stateParams', '$interval', 'clService', '$interval'];
 
     /* @ngInject */
-    function Controller($scope, $stateParams, $interval, clService){
+    function Controller($scope, $stateParams, $interval, clService) {
         var vm = this;
+        var timeOut;
+
+
         $scope.clientId = $stateParams.clientid;
         console.log('$stateParams: ', $stateParams);
         clService.getClient($stateParams.clientid)
-        .success(function (data) {
-//                console.log('Client.getclient: ', data);
+            .success(function (data) {
+                //                console.log('Client.getclient: ', data);
                 $scope.client = data.client[0];
             })
             .error(function (data) {
                 console.log('There was an error: ', data);
 
             });
-        
-         $scope.showStart = false;
+
+        $scope.showStart = false;
 
         $scope.startStopTimer = function () {
             $scope.showStart = !$scope.showStart;
             console.log($scope.showStart);
-           if ($scope.showStart)
+            if ($scope.showStart)
                 startTimer();
-           else
-               stopTimer();
+            else
+                stopTimer();
         }
-    
-       $scope.addHours = function () {
-           console.log('1H Added');
-         $scope.hTouchHours++;
-       }
-       $scope.addMins = function () {
-           console.log('1m Added');
-         $scope.hTouchMinutes++;
-       }
-       $scope.addSecs = function () {
-           console.log('10s Added');
-         $scope.hTouchSeconds += 10;
-       }
-           
-        
+        $scope.addHours = function () {
+            $scope.timeMsg = $scope.message = ('1 Hour Added');
+            $scope.hTouchHours++;
+            timerMsg();
+        }
+        $scope.addMins = function () {
+            $scope.timeMsg = $scope.message = '1 Minute Added';
+            $scope.hTouchMinutes++;
+            timerMsg();
+        }
+        $scope.addSecs = function () {
+            $scope.timeMsg = $scope.message = ('10 Seconds Added');
+            $scope.hTouchSeconds += 10;
+            timerMsg();
+        }
+
+
         $scope.hTouchHours = 0;
         $scope.hTouchMinutes = 0;
         $scope.hTouchSeconds = 0;
+        
+        
+
         function startTimer() {
             $scope.start = new Date();
-//            getHistoricalTouchTime() // needs to be .then()
+            //            getHistoricalTouchTime() // needs to be .then()
             $scope.countTouchTime = $interval(function () {
                 getTouchTime();
             }, 1000);
@@ -87,7 +95,21 @@
                 $interval.cancel($scope.countTouchTime);
                 $scope.countTouchTime = undefined;
             }
-                setHistoricalTime();
+            setHistoricalTime();
+            $scope.saveTime = {
+            Hours: $scope.hTouchHours, 
+            Minutes: + $scope.hTouchMinutes,
+            Seconds:  + $scope.hTouchSeconds,
+            Date: Date()
+                
         };
-    };
+            console.log($scope.saveTime);
+        };
+        function timerMsg () {
+            clearTimeout(timeOut)
+            timeOut = setTimeout(function () {
+                    $scope.timeMsg = "";
+                }, 3000);
+        }
+    }
 })();
