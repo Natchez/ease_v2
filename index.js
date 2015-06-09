@@ -130,7 +130,7 @@ app.get('/getArchiveList', function (req, res) {
     var rows = "";
     connection.query('SELECT * FROM ease.archive', function (err, rows, result) {
         for (var i = 0; i < rows.length; i++)
-            console.log('The solution is: ', rows[i].fname);
+            console.log('The solution is: ', rows[i].clientComp);
         res.status(200).json(rows);
     });
 });

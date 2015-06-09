@@ -5,7 +5,6 @@
     <ion-content>
         <ion-list>
             <ion-item ng-repeat="archive in archive" | searchFilter>
-                <a href="#/tab/clients/{{archive.idarchive}}">
                     <span>Client: {{archive.clientComp}}</span><br>
                     <span>Rate: ${{archive.rate}}</span><br>
                     <span>Time :<b>{{archive.hours}}:{{archive.minutes}}:{{archive.seconds}}</b></span><br>
@@ -16,7 +15,6 @@
                     <ion-option-button class="button-info" ng-click="delClient($index)">
                         Delete
                     </ion-option-button>
-                </a>
             </ion-item>
         </ion-list>
     </ion-content>

@@ -22,8 +22,8 @@
             };
                 
             function userRegister(create) {
-//                return $http.post('http://104.154.45.71/userRegister', create);
-                return $http.post('/userRegister', create);
+                return $http.post('http://104.154.45.71/userRegister', create);
+//                return $http.post('/userRegister', create);
                 
             };
 

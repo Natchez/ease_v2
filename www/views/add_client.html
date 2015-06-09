@@ -98,7 +98,7 @@
                         </label>
                         <label class="item item-input item-floating-label">
                             <span class="input-label">Zip Code</span>
-                            <input required name="zip" type="text" ng-model="createc.zip" placeholder="Zip">
+                            <input required name="zip" type="number" ng-model="createc.zip" placeholder="Zip">
                             <span class="errormsg" ng-show="clientForm.zip.$error.required && clientForm.zip.$touched ">Required</span>
                         </label>
                     </div>
@@ -128,7 +128,7 @@
                         <input required name="email" type="email" ng-model="createc.email" placeholder="Email">
                         <span class="errormsg" ng-show=" form.$submitted || clientForm.email.$error.email || clientForm.email.$error.required && clientForm.email.$touched ">This is not a valid email.</span>
                     </label>
-                    <button class="button button-block button-positive loginbtn" type="submit" ng-click="addClient(createc)"  ng-disabled="clientForm.$invalid || clientForm.$pristine">Submit</button>
+                    <button class="button button-block button-positive loginbtn" type="submit" ng-click="addClient(createc)" ng-disabled="clientForm.$invalid || clientForm.$pristine">Submit</button>
                 </fieldset>
             </form>
         </div>
