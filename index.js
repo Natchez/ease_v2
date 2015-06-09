@@ -20,11 +20,18 @@ var connection = mysql.createPool({
     database: 'ease'
 });
 
+/////////////////////////////////////////// CREATE SERVER STUFFS /////////////////////////////////////
+
+http
+    .createServer(app)
+    .listen(
+        app.get('port'),
+        "0.0.0.0"
+    );
+console.log("Ease Up on PORT 3000");
 
 
-
-
-/////////////////////////////////////////// USER LOGIN ////////////////////////////////////
+/////////////////////////////////////////// USER CRUD LOGIN ////////////////////////////////////
 
 app.post('/userLogin', function (req, res) {
     connection.query('SELECT * from user WHERE username = ? && password = ?', [(req.body.username), (req.body.password)], function (err, user) {
@@ -41,7 +48,6 @@ app.post('/userLogin', function (req, res) {
         }
     });
 });
-/////////////////////////////////////////// CREATE USER STUFFS ////////////////////////////////////
 
 
 app.post('/userRegister', function (req, res, next) {
@@ -118,12 +124,28 @@ app.post('/delClient', function(req, res){
 });
 
 
-/////////////////////////////////////////// CREATE SERVER STUFFS /////////////////////////////////////
+/////////////////////////////////////////// ARCHVIE CRUD ////////////////////////////////////
 
-http
-    .createServer(app)
-    .listen(
-        app.get('port'),
-        "0.0.0.0"
-    );
-console.log("Ease Up on PORT 3000");
+app.get('/getArchiveList', function (req, res) {
+    var rows = "";
+    connection.query('SELECT * FROM ease.archive', function (err, rows, result) {
+        for (var i = 0; i < rows.length; i++)
+            console.log('The solution is: ', rows[i].fname);
+        res.status(200).json(rows);
+    });
+});
+
+app.get('/getSingleTimer', function (req, res) {
+    connection.query('SELECT * FROM ease.archive WHERE idarchive = ?', [(req.query.id)], function (err, archive) {
+         if (typeof archive == 'undefined' || archive.length == 0) {
+            res.status(401).json({
+                message: 'Incorrect Query'
+            });
+        } else {
+            res.status(200).json({
+                message: 'Entry Found',
+                client: client
+            });
+        }
+    });
+});

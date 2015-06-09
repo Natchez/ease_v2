@@ -1,61 +1,23 @@
 <ion-view view-title="Archive">
+    <ion-nav-bar class="bar-stable has-header">
+        <ion-nav-back-button class="button-icon icon ion-ios7-arrow-back">Back</ion-nav-back-button>
+    </ion-nav-bar>
     <ion-content>
-            <ion-list can-swipe="listCanSwipe" show-delete="shouldShowDelete">
-               <ion-item class="addClD"><a href="#/app/addclient"><i class="icon ion-android-contacts"></i>&nbsp;&nbsp;Add Client</a></ion-item>
-                <ion-item>
-                    <ion-option-button class="button-positive" ng-click="archive(timer)">
-                        Archive
-                    </ion-option-button>
-                    <ion-option-button class="button-info" ng-click="edit(timer)">
+        <ion-list>
+            <ion-item ng-repeat="archive in archive" | searchFilter>
+                <a href="#/tab/clients/{{archive.idarchive}}">
+                    <span>Client: {{archive.clientComp}}</span><br>
+                    <span>Rate: ${{archive.rate}}</span><br>
+                    <span>Time :<b>{{archive.hours}}:{{archive.minutes}}:{{archive.seconds}}</b></span><br>
+                    <span>{{archive.create_time | date:'medium'}}</span>
+                    <ion-option-button class="button-info" ng-click="edit($index)">
                         Edit
                     </ion-option-button>
-                    Hello, {{item}}!
-                </ion-item>
-                <ion-item>
-                    <ion-option-button class="button-positive" ng-click="archive(timer)">
-                        Archive
+                    <ion-option-button class="button-info" ng-click="delClient($index)">
+                        Delete
                     </ion-option-button>
-                    <ion-option-button class="button-info" ng-click="edit(timer)">
-                        Edit
-                    </ion-option-button>
-                    Hello, {{item}}!
-                </ion-item>
-                <ion-item>
-                    <ion-option-button class="button-positive" ng-click="archive(timer)">
-                        Archive
-                    </ion-option-button>
-                    <ion-option-button class="button-info" ng-click="edit(timer)">
-                        Edit
-                    </ion-option-button>
-                    Hello, {{item}}!
-                </ion-item>
-                <ion-item>
-                    <ion-option-button class="button-positive" ng-click="archive(timer)">
-                        Archive
-                    </ion-option-button>
-                    <ion-option-button class="button-info" ng-click="edit(timer)">
-                        Edit
-                    </ion-option-button>
-                    Hello, {{item}}!
-                </ion-item>
-                <ion-item>
-                    <ion-option-button class="button-positive" ng-click="archive(timer)">
-                        Archive
-                    </ion-option-button>
-                    <ion-option-button class="button-info" ng-click="edit(timer)">
-                        Edit
-                    </ion-option-button>
-                    Hello, {{item}}!
-                </ion-item>
-                <ion-item>
-                    <ion-option-button class="button-positive" ng-click="archive(timer)">
-                        Archive
-                    </ion-option-button>
-                    <ion-option-button class="button-info" ng-click="edit(timer)">
-                        Edit
-                    </ion-option-button>
-                    Hello, {{item}}!
-                </ion-item>
-            </ion-list>
+                </a>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>

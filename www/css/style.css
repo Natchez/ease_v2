@@ -1,46 +1,49 @@
 /* Empty. Add your own CSS if you like */
 /*NAVIGATION STUFFS*/
-
-
 /*GLOBAL STUFFS*/
 
 * {
     font-family: 'Baumans', cursive;
 }
 
-.center{
+.center {
     margin: 0 auto;
     color: #fff !important;
 }
-.easebg{
+
+.easebg {
     background-color: #124960;
 }
-h1,h2,h3,h4,h5{
-        font-family: 'Baumans', cursive;
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Baumans', cursive;
 }
-.chart-container{
+
+.chart-container {
     width: 90%;
     margin: 0 auto;
 }
 
-
-a,p{
+a,
+p {
     text-decoration: none;
     color: #124960;
     font-size: 11px;
 }
 
-a:hover{
+a:hover {
     color: #387EF5;
     transition: all .5s;
-    
 }
 
- input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
-     margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input[type=number] {
@@ -53,7 +56,7 @@ fieldset {
     text-align: center;
 }
 
-.message{
+.message {
     width: 100%;
     color: #124960;
     text-align: center;
@@ -62,12 +65,11 @@ fieldset {
     transition: all 1s;
 }
 
-.errormsg{
+.errormsg {
     color: maroon;
 }
-
-
 /*HEADER STUFFS*/
+
 .nav {
     height: 44px;
     background-color: #124960;
@@ -79,7 +81,6 @@ fieldset {
     top: 2px;
     width: 80px;
 }
-
 /*  LOGIN STUFSS  */
 
 .easeForm {
@@ -90,48 +91,50 @@ fieldset {
     max-width: 250px;
     margin: 0 auto;
 }
+
 .logeaselogo {
     width: 100%;
     padding-bottom: 25px;
-    
 }
 
-.loginbtn{
+.loginbtn {
     background-color: #124960;
 }
 
-.loginhelp{
+.loginhelp {
     font-size: 15px;
 }
-
 /*SIGNUP STUFFS*/
 
-#ratehead{
+#ratehead {
     margin: 2%;
 }
+
 .create-account {
     position: relative;
     height: 9px;
     color: #124960;
 }
-.suForm{
+
+.suForm {
     padding-top: 55px;
     text-align: center;
 }
-
 /* PROFILE INFO*/
 
 #profilepage {
     width: 100%;
-/*    height: 528px;*/
+    /*    height: 528px;*/
+    
     margin: 0 auto;
 }
 
 .profilea {
     width: 100%;
-    height: 210px;  
-/*    background: #124960;*/
+    height: 210px;
+    /*    background: #124960;*/
 }
+
 .profileb {
     width: 100;
     height: 50px;
@@ -140,7 +143,6 @@ fieldset {
     color: #fff;
     background: #124960;
     text-align: center;
-
 }
 
 .profilec {
@@ -152,9 +154,10 @@ fieldset {
     max-width: 55px;
     margin: 0 auto;
 }
+
 .profilepic {
     width: 100%;
-     margin: 15% auto;
+    margin: 15% auto;
 }
 
 .poftop {
@@ -164,7 +167,7 @@ fieldset {
 }
 
 .info {
-    font-size: 15px ;
+    font-size: 15px;
     color: #124960;
     margin-bottom: 2%;
 }
@@ -175,7 +178,7 @@ fieldset {
     font-size: 12px;
 }
 
-.profileslider li span{
+.profileslider li span {
     position: relative;
 }
 
@@ -191,37 +194,37 @@ fieldset {
     top: 10px;
     width: 76px;
 }
+
 .hwbot {
     top: 15px;
     width: 14px;
     right: 15px;
-
 }
+
 .ibot {
     top: 15px;
     right: 35px;
 }
+
 .datebot {
     top: 15px;
     right: 44px;
-
 }
 
 .rgtarw {
     position: relative;
     float: right;
-    right:7px;
+    right: 7px;
     top: 10px;
-        
 }
+
 .lftarw {
     position: relative;
     top: 15px;
     left: 7px;
-        
 }
-
 /* CLIENT STUFFS */
+
 .addCl {
     position: relative;
 }
@@ -231,57 +234,63 @@ fieldset {
     margin: 0 auto;
 }
 
-.circle{
+.circle {
     border-radius: 50%;
-	width: 132px;
-	height: 132px;
+    width: 132px;
+    height: 132px;
     border: thin double #124960;
     text-align: center;
     margin: 0 auto;
 }
-.timertext{
+
+.timertext {
     position: relative;
     top: 65px;
+    cursor: pointer;
 }
-.time{
+
+.time {
     position: relative;
     top: 48px;
     font-size: 20px;
-} 
+    cursor: pointer;
+}
 
-.profileb h3{
+.profileb h3 {
     color: #fff;
 }
 
-.timerhelp{
+.timerhelp {
     color: #fff;
     position: relative;
     bottom: 11px;
 }
-select{
+
+select {
     width: 100%;
 }
-.rateselect{
+
+.rhead {
+    text-align: center;
+    color: #124960
+}
+
+.rateselect {
     float: left;
     position: relative;
     width: 30%;
     top: 15px;
 }
 
-.timeinc{
+.timeinc {
     float: right;
     width: 100%;
     text-align: center;
 }
 
-.timemsg{
+.timemsg {
     color: #142960;
     text-align: center;
     transition: all .5s;
     opacity: 1;
-}
-
-.ng-hide{
-    opacity: 0;
-    transition: all .5s;
 }

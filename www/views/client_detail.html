@@ -27,25 +27,20 @@
             <ion-slide-box show-pager="false">
                 <ion-slide>
                     <div class="profilec">
-                        <h4>Rates</h4>
+                        <h4 class="rhead">Rates</h4>
                         <ion-list>
-                            <ion-radio ng-value="{{user.lrate}}" ng-model="rate">${{user.lrate}}</ion-radio>
-                            <ion-radio ng-value="{{user.rrate}}" ng-model="rate">${{user.rrate}}</ion-radio>
-                            <ion-radio ng-value="{{user.hrate}}" ng-model="rate">${{user.hrate}}</ion-radio>
+                            <ion-radio ng-value="{{user.lrate}}" ng-model="timer.rate">${{user.lrate}}</ion-radio>
+                            <ion-radio ng-value="{{user.rrate}}" ng-model="timer.rate">${{user.rrate}}</ion-radio>
+                            <ion-radio ng-value="{{user.hrate}}" ng-model="timer.rate">${{user.hrate}}</ion-radio>
                         </ion-list>
                     </div>
                 </ion-slide>
                 <ion-slide>
                     <div class="profilec">
-                        Saved Time Variables
-                        <br> {{saveTime.Hours}} Hours {{saveTime.Minutes}} Minutes and {{saveTime.Seconds}} Seconds
-                        <br> Rate: ${{rate}},
-                        <br> {{client.cname}},
-                        <br> {{saveTime.Date}}
                         <div class="circle" id="the-stopwatch" ng-click="showStart = !showStart; startStopTimer()">
-                            <div ng-moddel="time" class="time"> {{touchHours}} : {{touchMinutes}} : {{touchSeconds}} </div>
+                            <div ng-model="timer.time" class="time"> {{touchHours}} : {{touchMinutes}} : {{touchSeconds}} </div>
                             <div class="timertext" ng-show="!showStart">Start</div>
-                            <div class="timertext" ng-show="showStart">Stop</div>
+                            <div class="timertext" ng-show="showStart" ng-click="saveTimer(timer)">Stop</div>
                         </div>
                         <div class="timeinc">
                             <button class="button button-clear button-dark" ng-click="addHours()">

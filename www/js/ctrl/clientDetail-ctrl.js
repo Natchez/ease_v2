@@ -14,7 +14,7 @@
 
 
         $scope.clientId = $stateParams.clientid;
-        console.log('$stateParams: ', $stateParams);
+        //        console.log('$stateParams: ', $stateParams);
         clService.getClient($stateParams.clientid)
             .success(function (data) {
                 //                console.log('Client.getclient: ', data);
@@ -29,7 +29,6 @@
 
         $scope.startStopTimer = function () {
             $scope.showStart = !$scope.showStart;
-            console.log($scope.showStart);
             if ($scope.showStart)
                 startTimer();
             else
@@ -55,8 +54,8 @@
         $scope.hTouchHours = 0;
         $scope.hTouchMinutes = 0;
         $scope.hTouchSeconds = 0;
-        
-        
+
+
 
         function startTimer() {
             $scope.start = new Date();
@@ -96,20 +95,23 @@
                 $scope.countTouchTime = undefined;
             }
             setHistoricalTime();
-            $scope.saveTime = {
-            Hours: $scope.hTouchHours, 
-            Minutes: + $scope.hTouchMinutes,
-            Seconds:  + $scope.hTouchSeconds,
-            Date: Date()
-                
-        };
-            console.log($scope.saveTime);
-        };
-        function timerMsg () {
+
+            $scope.saveTimer = {
+                    Hours: $scope.hTouchHours,
+                    Minutes: $scope.hTouchMinutes,
+                    Seconds: $scope.hTouchSeconds,
+                    fkidusers: $scope.user.idusers,
+                    rate: $scope.timer.rate
+            }
+
+                console.log($scope.saveTimer);
+            }
+
+        function timerMsg() {
             clearTimeout(timeOut)
             timeOut = setTimeout(function () {
-                    $scope.timeMsg = "";
-                }, 3000);
+                $scope.timeMsg = "";
+            }, 3000);
         }
     }
 })();
