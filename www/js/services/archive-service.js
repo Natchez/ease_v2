@@ -16,12 +16,12 @@
         return service;
 
         function getArchiveList() {
-            return $http.get('http://104.154.45.71/getArchiveList');
+            return $http.get('http://104.154.45.71:3000/getArchiveList');
 //                        return $http.get('/getArchiveList');
         };
 
         function getSingleTimer(timerid) {
-            return $http.get('http://104.154.45.71/getSingleTimer/?id=' + timerid);
+            return $http.get('http://104.154.45.71:3000/getSingleTimer/?id=' + timerid);
             //            return $http.get('/getClient/?id=' + timerid);
 
         };

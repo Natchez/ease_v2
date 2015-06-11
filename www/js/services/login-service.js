@@ -17,12 +17,12 @@
             return service;
             
             function userLogin(user) {
-//                return $http.post('http://104.154.45.71/userLogin', user);
-                return $http.post('/userLogin', user);
+                return $http.post('http://104.154.45.71:3000/userLogin', user);
+//                return $http.post('/userLogin', user);
             };
                 
             function userRegister(create) {
-                return $http.post('http://104.154.45.71/userRegister', create);
+                return $http.post('http://104.154.45.71:3000/userRegister', create);
 //                return $http.post('/userRegister', create);
                 
             };
